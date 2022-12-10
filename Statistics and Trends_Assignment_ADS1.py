@@ -24,7 +24,7 @@ indicator_elec,year_elec = worldbank(filename,countries,columns,indicators[2])
 indicator_arland,year_arland = worldbank(filename,countries,columns,indicators[3])
 print(year_urb_pop)#showing transpose dataframe
 
-#Showing line plot
+#Showing line plots for Urban Population amongst the countries
 plt.figure(figsize=(10,7),dpi=500)
 for i in range(len(countries)):
     plt.plot(year_urb_pop.index,year_urb_pop[countries[i]],label=countries[i])
@@ -34,6 +34,63 @@ plt.xlabel('Year')
 plt.ylabel('Urban Population')
 plt.show()
 
-#Showing original dataframe and bar chat for urban population growth amongst different countries
+#Showing original dataframe 
 print(indicator_urb_pop) 
 
+#Showing line plot for CO2 Emission from liquid fuel consumption amongst the countries
+plt.figure(figsize=(10,7),dpi=500)
+for i in range(len(countries)):
+    plt.plot(year_co2.index,year_co2[countries[i]],label=countries[i])
+plt.legend(bbox_to_anchor=(1,1))
+plt.title('Year on Year Trend of the CO2 Emissions from liquid fuel Consumption for these 5 countries')
+plt.xlabel('Year')
+plt.ylabel('CO2 Emissions')
+plt.show()
+print(indicator_co2)
+
+#Showing line plot for Electric Power Consumption amongst the countries
+plt.figure(figsize=(10,7),dpi=500)
+for i in range(len(countries)):
+    plt.plot(year_elec.index,year_elec[countries[i]],label=countries[i])
+plt.legend(bbox_to_anchor=(1,1))
+plt.title('Year on Year Trend of the Electric Power Consumption for these 5 countries')
+plt.xlabel('Year')
+plt.ylabel('Electric Power Consumption')
+plt.show()
+print(indicator_elec)
+
+#Showing line plot for Arable land(% of land area) amongst the countries
+plt.figure(figsize=(10,7),dpi=500)
+for i in range(len(countries)):
+    plt.plot(year_arland.index,year_arland[countries[i]],label=countries[i])
+plt.legend(bbox_to_anchor=(1,1))
+plt.title('Year on Year Trend of the Arable land for these 5 countries')
+plt.xlabel('Year')
+plt.ylabel('Arable land')
+plt.show()
+print(indicator_arland)
+
+#Showing bar chat for urban population growth amongst different countries
+indicator_urb_pop.plot(kind='bar')
+plt.title('Grouped bar for Urban Population for different countries over the years')
+plt.xlabel('Countries')
+plt.ylabel('Urban Population')
+#plt.rcParams["figure.dpi"] = 1000
+plt.show()
+
+#Showing bar chat for Elecric Power Consumption growth amongst different countries
+indicator_elec.plot(kind='bar')
+plt.title('Grouped bar for Electric Power Consumption for different countries over the years')
+plt.xlabel('Countries')
+plt.ylabel('Electric Power Consumption')
+#plt.rcParams["figure.dpi"] = 1000
+plt.show()
+
+#Showing bar chat for Arable land(% of land area) growth amongst different countries
+indicator_arland.plot(kind='bar')
+plt.title('Grouped bar for Arable land for different countries over the years')
+plt.xlabel('Countries')
+plt.ylabel('Arable land')
+plt.legend(bbox_to_anchor=(1,1), loc="upper left")
+#plt.rcParams["figure.dpi"] = 1000
+plt.show() 
